@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Form without redirect</title>
+    <title>Form with redirect</title>
   </head>
   <body>
-    <h1>Form without redirect</h1>
-    <form id="form-without-redirect">
+    <h1>Form with redirect</h1>
+    <form id="form-with-redirect" method="get" action="success.html">
       <div>
         <label>
           Name:
@@ -22,13 +22,6 @@
         <input type="submit" value="Send" />
       </div>
     </form>
-
-    <script type="text/javascript">
-      document.getElementById("form-without-redirect").addEventListener("submit", function (event) {
-        event.preventDefault();
-        alert('Shuuu');
-      });
-    </script>
 
     <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/fd8f4a59-b296-4836-a69e-9b52bc3c9989-loader.js" ></script>
   </body>
