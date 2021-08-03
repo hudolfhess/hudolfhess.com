@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form without redirect</title>
+  </head>
+  <body>
+    <form id="form-without-redirect">
+      <div>
+        <label>
+          Name:
+          <input type="text" name="name" />
+        </label>
+      </div>
+      <div>
+        <label>
+          E-mail:
+          <input type="email" name="email" />
+        </label>
+      </div>
+      <div>
+        <input type="submit" value="Send" />
+      </div>
+    </form>
+
+    <script type="text/javascript">
+      document.getElementById("form-without-redirect").addEventListener("submit", function (event) {
+        event.preventDefault();
+        alert('Shuuu');
+      });
+    </script>
+  </body>
+</html>
