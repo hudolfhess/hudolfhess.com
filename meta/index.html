@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teste</title>
+  </head>
+  <body>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "606484931002252",
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: "v11.0",
+        });
+      };
+    </script>
+
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <h3>Ads Creation</h3>
+
+    <div class="fb-lwi-ads-creation" data-fbe-extras="{'business_config':{'business':{'name':'Sample Business'}},
+      'setup':{'external_business_id':'my-sample-business',
+      'timezone':'America/Los_Angeles',
+      'currency':'USD',
+      'business_vertical':'ECOMMERCE'},
+      'repeat':false}" data-fbe-scopes="manage_business_extension,ads_management"
+      data-fbe-redirect-uri="https://hudolf.dev/meta/"></div>
+  </body>
+</html>
