@@ -1,30 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Teste</title>
-  </head>
-  <body>
-    <script>
-      window.fbAsyncInit = function () {
-        FB.init({
-          appId: "606484931002252",
-          autoLogAppEvents: true,
-          xfbml: true,
-          version: "v11.0",
-        });
-      };
-    </script>
 
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<head>
+  <title>Teste</title>
+</head>
 
-    <h3>Ads Creation</h3>
+<body>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: "606484931002252",
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: "v11.0",
+      });
+    };
 
-    <div class="fb-lwi-ads-creation" data-fbe-extras="{'business_config':{'business':{'name':'Sample Business'}},
-      'setup':{'external_business_id':'my-sample-business',
-      'timezone':'America/Los_Angeles',
-      'currency':'USD',
-      'business_vertical':'ECOMMERCE'},
-      'repeat':false}" data-fbe-scopes="manage_business_extension,ads_management"
-      data-fbe-redirect-uri="https://hudolf.dev/meta/"></div>
-  </body>
+    //1. Load the JavaScript SDK asynchronously
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    //3. Facebook login with JavaScript SDK
+    function launchFBE() {
+      FB.login(function (response) {
+        if (response.authResponse) {
+          // returns a User Access Token with scopes requested
+          const accessToken = response.authResponse.accessToken;
+          const message = {
+            'success': true,
+            'access_token': accessToken,
+          };
+          // store access token for later  
+        } else {
+          console.log('User cancelled login or did not fully authorize.');
+        }
+      }, {
+        scope: 'manage_business_extension',
+        // refer to the extras object table for details
+        extras: {
+          "setup": {
+            "external_business_id": "123456",
+            "timezone": "America\/Los_Angeles",
+            "currency": "BRL",
+            "business_vertical": "ECOMMERCE"
+          },
+          "business_config": {
+            "business": {
+              "name": "Business"
+            },
+            "ig_cta": {
+              "enabled": true,
+              "cta_button_text": "Book Now",
+              "cta_button_url": "https://partner-site.com/foo-business"
+            }
+          },
+          "repeat": false
+        }
+      });
+    }
+  </script>
+
+  <button onclick="launchFBE()"> Launch FBE Workflow </button>
+</body>
+
 </html>
